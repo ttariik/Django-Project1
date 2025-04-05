@@ -18,9 +18,7 @@ class RedirectToGadgetView(RedirectView):
     pattern_name = "gadget_slug_url"
     
     def get_redirect_url(self, *args, **kwargs):
-        # Berechnung des Slugs aus dem Gadget anhand der gadget_id
         slug = slugify(gadgets[kwargs.get("gadget_id", 0)]["name"])
-        # Übergabe des tatsächlichen Slugs an die URL
         return reverse(self.pattern_name, kwargs={'gadget_slug': slug})
 
 
@@ -28,9 +26,7 @@ class RedirectToGadgetView(RedirectView):
 
 def single_gadget_int_view(request, gadget_id):
     if len(gadgets) > gadget_id:
-        # Berechnung des Slugs
         new_slug = slugify(gadgets[gadget_id]["name"])
-        # Erstellen der URL mit dem Slug
         new_url = reverse("gadget_slug_url", args=[new_slug])
         return redirect(new_url)
     return HttpResponseNotFound("Gadget nicht gefunden")
