@@ -1,0 +1,14 @@
+*.pyc
+*.pyo
+__pycache__/
+db.sqlite3
+env/
+venv/
+*.log
+*.pot
+*.pyc
+*.pyo
+*.sqlite3
+*.bak
+*.swp
+*.swo
